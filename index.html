@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT PERSONAL RESUME</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap">
+    <style>
+        :root {
+            --neon-blue: #0ff0fc;
+            --neon-pink: #ff2a6d;
+            --neon-purple: #d300c5;
+            --dark-bg: #0d0221;
+            --darker-bg: #02010a;
+            --text: #b5b5b5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            font-family: 'Share Tech Mono', monospace;
+            line-height: 1.6;
+            padding: 2rem;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 109, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(13, 240, 252, 0.05) 0%, transparent 20%);
+        }
+
+        .cyber-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 20px rgba(13, 240, 252, 0.3),
+                        0 0 40px rgba(211, 0, 197, 0.2);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-container::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed var(--neon-pink);
+            opacity: 0.5;
+            pointer-events: none;
+            animation: pulse 6s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--neon-pink);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--neon-blue); }
+            to { text-shadow: 0 0 15px var(--neon-blue), 0 0 20px var(--neon-purple); }
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info i {
+            color: var(--neon-purple);
+        }
+
+        section {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 1.5rem;
+        }
+
+        ul li::before {
+            content: "▹";
+            color: var(--neon-pink);
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .project, .education-item, .certification {
+            background: rgba(13, 2, 33, 0.7);
+            border-left: 3px solid var(--neon-blue);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .project:hover, .education-item:hover, .certification:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 15px rgba(13, 240, 252, 0.2);
+        }
+
+        .project h4 {
+            color: var(--neon-purple);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .project h4::before {
+            content: ">_ ";
+            color: var(--neon-blue);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--neon-pink);
+            color: black;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            background: var(--neon-blue);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .cyber-container {
+                border: none;
+                box-shadow: none;
+            }
+            h1, h2, h3 {
+                color: black;
+                text-shadow: none;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+
+        /* Terminal effect */
+        .typing {
+            border-right: 3px solid var(--neon-blue);
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--neon-blue); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-container">
+        <header>
+            <h1 id="name">LOADING_CV.EXE</h1>
+            <div class="contact-info">
+                <span><i>📧</i> waseemaldawoudpro@gmail.com</span>
+                <span><i>📱</i> +962 79 144 1627</span>
+                <span><i>🌐</i><a href="https://www.linkedin.com/in/waseem-aldawoud-9bb23b32a/">LinkedIn</a></span>
+				<span><i>🌐</i><a href="https://github.com/desertwarfare">GitHub</a></span>
+            </div>
+        </header>
+
+        <section>
+            <h2>// CAREER_OBJECTIVE</h2>
+            <p>
+                A motivated <strong>3rd-year Computer Science student</strong> at Mutah University, pursuing a career in <strong class="neon-text">networking and cybersecurity</strong>. 
+                CCNA-certified with hands-on experience in <strong>network simulation (Packet Tracer), database management, and programming</strong>. 
+                Seeking an internship to apply technical skills in a real-world networking environment.
+            </p>
+        </section>
+
+        <section>
+            <h2>// EDUCATION</h2>
+            <div class="education-item">
+                <h3>Bachelor of Computer Science</h3>
+                <p><em>Mutah University | GPA: 85% | Expected Graduation: Early 2026</em></p>
+                <ul>
+                    <li>Relevant Coursework: Object-Oriented Programming (C++, Python), Data Structures & Algorithms</li>
+                    <li>Database Systems (MySQL, phpMyAdmin, Oracle Forms)</li>
+                    <li>Computer Networks (CCNA-focused studies), Image Processing (MATLAB), Wireless Networks</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>// TECHNICAL_SKILLS</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Networking & Security:</h3>
+                    <ul>
+                        <li>CCNA Certified (Routing & Switching)</li>
+                        <li>Packet Tracer (Network Design)</li>
+                        <li>Basic Cybersecurity & Ethical Hacking Concepts</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming & Databases:</h3>
+                    <ul>
+                        <li>Python, C++, SQL, HTML, VB.NET</li>
+                        <li>MySQL, phpMyAdmin, Oracle Forms</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & OS:</h3>
+                    <ul>
+                        <li>Linux (Kali)</li>
+                        <li>Cisco Packet Trace</li>
+						<li>Wireshark</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>// PROJECTS</h2>
+			<div class="project">
+                <h4>ExamGuard (AI & Computer Vision - Graduation Project) (WORK-IN-PROGRESS)</h4>
+                <ul>
+                    <li>Developing AI-powered cheating detection using thermal cameras</li>
+                    <li>Expected completion: Late 2025 | Competing for funding</li>
+					<li><a href='https://i.ibb.co/Y4vj658P/Moath-Abdulraof-Al-Garaleh-Waseem-Kamal-Al-Zoubi-Meshari-B-17-5-x-27-883-in.png'>View Poster</a>
+				</ul>
+            </div>
+            <div class="project">
+                <h4>Enterprise Network Design & Simulation (Using Packet Tracer) (WORK-IN-PROGRESS)</h4>
+                <ul>
+                    <li>Designe and simulate a full network topology for a fictional medium-sized company.</li>
+					<li>Skills used: Routing protocols (EIGRP, OSPF), VLANs, STP, DHCP, NAT, ACLs.</li>
+					<li>Deliverables: Network diagrams, configuration files, documentation.</li>
+                </ul>
+            </div>
+			<div class="project">
+                <h4>Mutah University Course Projects</h4>
+                <ul>
+                    <li>DBMS Desktop Application for a medium-sized Airline Company. <a href="https://youtu.be/zyzZu4CjufI?si=ks7U3xXil-bEYzu8">Showcase video</a></li>
+                    <li>OpenGL: A simple dynamic city simulation with interactive keys that reflect changes on the environment.</li>
+					<li>Airline Management System (HTML, MySQL, PHP)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>// CERTIFICATIONS</h2>
+            <div class="certification">
+                <h3>Cisco Certified Network Associate (CCNA)</h3>
+            </div>
+        </section>
+
+        <section>
+            <h2>// LANGUAGES</h2>
+            <ul>
+                <li><strong>Arabic</strong> (Native)</li>
+                <li><strong>English</strong> (Fluent)</li>
+                <li><strong>Russian</strong> (Intermediate)</li>
+            </ul>
+        </section>
+		
+		<section>
+            <h2>// Gallery</h2>
+            <ul>
+			<div class="gallery">
+			<h3>ExamGuard Project Poster</h3>
+            <a href="https://ibb.co/Cpx0qjvm"><img src="https://i.ibb.co/Y4vj658P/Moath-Abdulraof-Al-Garaleh-Waseem-Kamal-Al-Zoubi-Meshari-B-17-5-x-27-883-in.png" alt="Moath-Abdulraof-Al-Garaleh-Waseem-Kamal-Al-Zoubi-Meshari-B-17-5-x-27-883-in" border="0"></a>
+		    </div>
+			<div class="gallery">
+			<h3>CCNA Course Certificate</h3>
+			<a href="https://ibb.co/G4TJvdDS"><img src="https://i.ibb.co/5gF9W13H/CCNA-Certificate.png" alt="CCNA-Certificate" border="0"></a><br /><br/>
+			</div>
+			<div class="gallery">
+			<h3>Duolingo English Exam</h3>
+			<a href="https://ibb.co/CsNPGPkb"><img src="https://i.ibb.co/3YGRZRDp/image.png" alt="image" border="0"></a>
+			</div>
+			<div class="gallery">
+			<h3>Mutah University Honorable Students — 3rd Year, Fall Semester</h3>
+			<a href="https://ibb.co/7dH0Gs5W"><img src="https://i.ibb.co/JwNSzD47/2Q.webp" alt="2Q" border="0"></a>
+			</div>
+			<div class ="gallery">
+			<h3>Showcase of my Visual Basic Project</h3>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/zyzZu4CjufI?si=P1pUniTkYHzqQbRX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+			</ul>
+        </section>
+   </div>
+
+<button class="print-btn">
+  <a href="#" style="color: inherit; text-decoration: none;">▲ Back to Top ▲</a>
+</button>
+
+    <script>
+        // Terminal typing effect
+        const nameText = "WASEEM_KAMAL_AL-DAWOUD";
+        const nameElement = document.getElementById('name');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < nameText.length) {
+                nameElement.innerHTML = nameText.substring(0, i+1) + '<span class="typing"></span>';
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                nameElement.innerHTML = nameText;
+            }
+        }
+
+        // Start animation
+        setTimeout(typeWriter, 500);
+
+        // Add glitch effect on hover to headers
+        const headers = document.querySelectorAll('h1, h2, h3');
+        headers.forEach(header => {
+            header.addEventListener('mouseover', () => {
+                header.style.textShadow = `0 0 10px ${Math.random() > 0.5 ? 'var(--neon-pink)' : 'var(--neon-blue)'}`;
+            });
+            header.addEventListener('mouseout', () => {
+                if (header.tagName === 'H1') {
+                    header.style.textShadow = '0 0 5px var(--neon-blue)';
+                } else if (header.tagName === 'H2') {
+                    header.style.textShadow = 'none';
+                } else {
+                    header.style.textShadow = '0 0 5px var(--neon-pink)';
+                }
+            });
+        });
+
+        // Add scan lines effect
+        const container = document.querySelector('.cyber-container');
+        const scanLines = document.createElement('div');
+        scanLines.style.position = 'absolute';
+        scanLines.style.top = '0';
+        scanLines.style.left = '0';
+        scanLines.style.width = '100%';
+        scanLines.style.height = '100%';
+        scanLines.style.background = 'repeating-linear-gradient(0deg, rgba(0, 255, 255, 0.05), rgba(0, 255, 255, 0.05) 1px, transparent 1px, transparent 4px)';
+        scanLines.style.pointerEvents = 'none';
+        scanLines.style.zIndex = '9999';
+        container.appendChild(scanLines);
+    </script>
+</body>
+</html>
